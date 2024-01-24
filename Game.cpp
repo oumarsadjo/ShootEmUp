@@ -26,6 +26,22 @@ Game::Game() : window(sf::VideoMode(WIN_LARGEUR, WIN_HAUTEUR), "Fond avec Person
     scoreText.setFont(font);
     scoreText.setCharacterSize(24);
     scoreText.setPosition(WIN_LARGEUR - 120, 10);  // Position en haut à droite
+
+    // Le son pour la collision
+        if (!collisionSoundBuffer.loadFromFile("../Photos/collision.ogg")) {
+        std::cout << "Erreur lors du chargement du fichier audio." << std::endl;
+    }
+    collisionSound.setBuffer(collisionSoundBuffer);
+
+    if (!gameOverSoundBuffer.loadFromFile("../Photos/gameOver.ogg")) {
+        std::cout << "Erreur lors du chargement du fichier audio de game over." << std::endl;
+    }
+    gameOverSound.setBuffer(gameOverSoundBuffer);
+
+    if (!congratsSoundBuffer.loadFromFile("../Photos/congratulations.ogg")) {
+        std::cout << "Erreur lors du chargement du fichier audio de félicitations." << std::endl;
+    }
+    congratsSound.setBuffer(congratsSoundBuffer);
 }
 
 void Game::initializeEnemies() {
@@ -96,6 +112,8 @@ void Game::update(float deltaTime) {
 }
 
 void Game::gameOver() {
+    // Faire joueur le son
+    gameOverSound.play();
     // Afficher "GAME OVER" et fermer la fenêtre du jeu
     sf::Text gameOverText("GAME OVER", font, 50);
     gameOverText.setFillColor(sf::Color::Red);
@@ -112,40 +130,47 @@ void Game::gameOver() {
 }
 
 void Game::congratulations() {
+    // Son pour les félicitations
+    congratsSound.play();
+
     // Afficher "FÉLICITATIONS" et attendre 3 secondes
-    sf::Text congratsText("FELICITATIONS", font, 50);
+    sf::Text congratsText("**** CONGRATULATIONS ****", font, 50);
     congratsText.setFillColor(sf::Color::Green);
-    congratsText.setPosition(WIN_LARGEUR / 2 - 200, WIN_HAUTEUR / 2 - 25);
 
-    window.clear();
-    window.draw(backgroundSprite);
-    window.draw(player.getSprite());
+    // Calculate the position to center the text
+    sf::FloatRect textBounds = congratsText.getGlobalBounds();
+    float xPos = (WIN_LARGEUR - textBounds.width) / 2;
+    float yPos = (WIN_HAUTEUR - textBounds.height) / 2;
 
-    for (const auto& enemy : enemies) {
-        if (!enemy.isDestroyed()) {
-            window.draw(enemy.getSprite());
-        }
-    }
+    congratsText.setPosition(xPos, yPos);
 
-    // Dessiner le texte du score
-    window.draw(scoreText);
-
-    window.draw(congratsText);
-    window.display();
 
     sf::Clock clock;
+
     while (clock.getElapsedTime().asSeconds() < 3) {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
-                window.close();
+        processEvents();  // Process events to keep the window responsive
+
+        window.clear();
+        window.draw(backgroundSprite);
+        window.draw(player.getSprite());
+
+        for (const auto& enemy : enemies) {
+            if (!enemy.isDestroyed()) {
+                window.draw(enemy.getSprite());
             }
         }
+
+        // Dessiner le texte du score
+        window.draw(scoreText);
+
+        window.draw(congratsText);
+        window.display();
     }
 
     window.close();
     gameOverFlag = true;
 }
+
 
 
 
@@ -164,12 +189,17 @@ void Game::checkCollisions() {
                     enemy.setDestroyed(true);
                     score += 1;  // Mettez à jour le score ici
                     player.destroyBullet(i);
+
+                    // Play the collision sound
+                    collisionSound.play();
+
                     return;  // Sortez de la fonction dès qu'une collision est détectée
                 }
             }
         }
     }
 }
+
 
 
 void Game::destroyCollidedBullets(const std::vector<bool>& collisions) {

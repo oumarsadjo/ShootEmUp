@@ -3,6 +3,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "Global.hpp"
 #include "Player.hpp"
 #include "Enemy.hpp"
@@ -22,6 +23,14 @@ private:
     std::vector<Enemy> enemies;
     bool enemiesDestroyed;
     bool gameOverFlag ;
+    sf::SoundBuffer collisionSoundBuffer;
+    sf::Sound collisionSound;
+
+    sf::SoundBuffer gameOverSoundBuffer;
+    sf::Sound gameOverSound;
+
+    sf::SoundBuffer congratsSoundBuffer;
+    sf::Sound congratsSound;
 
     sf::Font font;  // Nouvelle fonte pour le texte du score
     sf::Text scoreText;  // Nouveau texte pour afficher le score

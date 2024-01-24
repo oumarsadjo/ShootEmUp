@@ -6,8 +6,6 @@
 Enemy::Enemy() {
     if (!enemyTexture.loadFromFile("../Photos/Enemy2.png")) {
         std::cerr << "Erreur lors du chargement de la texture de l'ennemi." << std::endl;
-    } else {
-        std::cout << "Texture de l'ennemi chargée avec succès." << std::endl;
     }
 
     enemySprite.setTexture(enemyTexture);
