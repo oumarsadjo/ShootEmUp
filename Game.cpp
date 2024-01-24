@@ -112,8 +112,9 @@ void Game::update(float deltaTime) {
 }
 
 void Game::gameOver() {
-    // Faire joueur le son
+    // Faire jouer le son
     gameOverSound.play();
+
     // Afficher "GAME OVER" et fermer la fenêtre du jeu
     sf::Text gameOverText("GAME OVER", font, 50);
     gameOverText.setFillColor(sf::Color::Red);
@@ -123,11 +124,16 @@ void Game::gameOver() {
     window.draw(gameOverText);
     window.display();
 
-    sf::sleep(sf::seconds(3)); // Attendre 3 secondes
-    window.close();
+    // Attente pour afficher "GAME OVER" pendant quelques secondes
+    sf::sleep(sf::seconds(3));
 
+    // Nouvelle attente pour laisser le texte affiché avant de fermer la fenêtre
+    sf::sleep(sf::seconds(1));
+
+    window.close();
     gameOverFlag = true;
 }
+
 
 void Game::congratulations() {
     // Son pour les félicitations

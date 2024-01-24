@@ -4,7 +4,7 @@
 
 const int WIN_HAUTEUR = 600;
 const int WIN_LARGEUR = 800;
-const int NUM_ENEMIES = 1;
+const int NUM_ENEMIES = 400;
 const float positionPlayerX = WIN_LARGEUR / 2;
 const float positionPlayerY = WIN_HAUTEUR - 25;
 const int BASE_SIZE = 16;
