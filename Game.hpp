@@ -1,4 +1,8 @@
-// Game.hpp
+/* Game.hpp
+{=========================================================}
+{===== Ce fichier contient methodes/attributs du Jeux ====}
+{=========================================================}
+*/
 
 #pragma once
 
@@ -31,17 +35,23 @@ private:
 
     sf::SoundBuffer congratsSoundBuffer;
     sf::Sound congratsSound;
+    sf::Music backgroundMusic;
 
-    sf::Font font;  // Nouvelle fonte pour le texte du score
-    sf::Text scoreText;  // Nouveau texte pour afficher le score
+    sf::Font font;
+    sf::Font font_game_over;
+    sf::Font font_congratulations;
+    sf::Font font_restart;   
+    sf::Text scoreText;  
 
-    int score;  // Nouvelle variable pour stocker le score
+    int score; 
 
-    void initializeEnemies();  // Nouvelle fonction pour initialiser les ennemis
+    void initializeEnemies();  
 
     void processEvents();
     void update(float deltaTime);
     void render();
+    void restartGame();
     void checkCollisions();
+    void restartIfRequested();
     void destroyCollidedBullets(const std::vector<bool>& collisions);
 };

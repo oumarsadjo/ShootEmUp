@@ -1,7 +1,10 @@
-// Player.hpp
+/* Player.hpp
+{=========================================================}
+{==== Ce fichier contient methodes/attributs du Joueur ===}
+{=========================================================}
+*/
 
-#ifndef PLAYER_HPP
-#define PLAYER_HPP
+#pragma once
 
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -20,6 +23,7 @@ public:
     sf::Sprite& getSprite();
     sf::Vector2f getPosition() const;
     void shoot();
+    void reset();
 
 private:
     sf::Texture texture;
@@ -30,5 +34,3 @@ private:
 
     std::vector<sf::RectangleShape> bullets;
 };
-
-#endif // PLAYER_HPP

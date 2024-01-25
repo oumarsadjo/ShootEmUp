@@ -1,4 +1,8 @@
-// Enemy.hpp
+/* Enemy.hpp
+{=========================================================}
+{=== Ce fichier contient methodes/attributs des enemies ==}
+{=========================================================}
+*/
 
 #pragma once
 

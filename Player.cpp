@@ -1,15 +1,19 @@
-// Player.cpp
+/* Player.hpp
+{=========================================================}
+{===== Fichier de l'implementation de la class Player ====}
+{=========================================================}
+*/
 
 #include "Player.hpp"
 #include "Global.hpp"
 #include <iostream>
 
 Player::Player(float initialX, float initialY) {
-    if (!texture.loadFromFile("../Photos/Player1.png")) {
+    if (!texture.loadFromFile("../Scr/player.png")) {
         std::cerr << "Erreur lors du chargement de la texture du joueur." << std::endl;
     }
 
-    if (!bullet_texture.loadFromFile("../Photos/PlayerBullet.png")) {
+    if (!bullet_texture.loadFromFile("../Scr/PlayerBullet.png")) {
         std::cerr << "Erreur lors du chargement de la texture de la balle du joueur." << std::endl;
     }
 
@@ -69,4 +73,8 @@ sf::Vector2f Player::getPosition() const {
 
 void Player::shoot() {
     bulletPlayer();
+}
+
+void Player::reset() {
+    playerSprite.setPosition(400, 600 - 25);
 }

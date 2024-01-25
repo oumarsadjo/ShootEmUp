@@ -1,10 +1,14 @@
-// Enemy.cpp
+/* Enemy.hpp
+{=========================================================}
+{===== Fichier de l'implementation de la class Enemy =====}
+{=========================================================}
+*/
 
 #include "Enemy.hpp"
 #include <iostream>
 
 Enemy::Enemy() {
-    if (!enemyTexture.loadFromFile("../Photos/Enemy2.png")) {
+    if (!enemyTexture.loadFromFile("../Scr/enemy.png")) {
         std::cerr << "Erreur lors du chargement de la texture de l'ennemi." << std::endl;
     }
 
@@ -13,7 +17,6 @@ Enemy::Enemy() {
     speed = 20.0f;
     destroyed = false;
 }
-
 
 
 void Enemy::update(float deltaTime) {
