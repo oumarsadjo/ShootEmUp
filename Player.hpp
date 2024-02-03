@@ -17,6 +17,8 @@ public:
     void bulletPlayer();
     void moveLeft();
     void moveRight();
+    
+    /*Pour faire disparaitre les balles*/
     void destroyBullet(std::size_t index);
 
     void update(float deltaTime);

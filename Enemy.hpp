@@ -21,5 +21,6 @@ private:
     sf::Sprite enemySprite;
     float speed;
     bool destroyed;
+    /*Pour generer aleatoirement les positions des enemis dans l'ecran */
     void generateRandomPosition();
 };

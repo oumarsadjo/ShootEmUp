@@ -10,11 +10,11 @@
 
 Player::Player(float initialX, float initialY) {
     if (!texture.loadFromFile("../Scr/player.png")) {
-        std::cerr << "Erreur lors du chargement de la texture du joueur." << std::endl;
+        std::cerr <<"Erreur lors du chargement de la texture du joueur." << std::endl;
     }
 
     if (!bullet_texture.loadFromFile("../Scr/PlayerBullet.png")) {
-        std::cerr << "Erreur lors du chargement de la texture de la balle du joueur." << std::endl;
+        std::cerr <<"Erreur lors du chargement de la texture de la balle du joueur." << std::endl;
     }
 
     playerSprite.setTexture(texture);
@@ -50,6 +50,8 @@ void Player::bulletPlayer() {
 
     bullets.push_back(bullet);
 }
+
+/*Pour faire disparaitre les balles*/
 
 void Player::destroyBullet(std::size_t index) {
     if (index < bullets.size()) {

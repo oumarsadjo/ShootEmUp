@@ -2,6 +2,15 @@
 
 Shoot Em Up Game - 2D
 
+- Cloner le projet complet:
+  
+	git clone https://github.com/oumarsadjo/ShootEmUp
+	cd ShootEmUp
+	mkdir build && cd build
+	cmake ..
+	make
+	./ShootEm
+
 Pour faire tourner ce jeux sous linux, merci de suivre les etapes suivantes:
 
 Etape 1: Installation de la bibliotheque SFML adaptee aux jeux 2D:

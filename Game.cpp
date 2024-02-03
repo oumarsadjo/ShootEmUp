@@ -239,7 +239,7 @@ void Game::congratulations() {
     congratsSound.play();
 
     // Afficher "FÉLICITATIONS" et attendre 3 secondes
-    sf::Text congratsText("**** CONGRATULATIONS ****", font_congratulations, 50);
+    sf::Text congratsText("***** CONGRATULATIONS *****", font_congratulations, 50);
     congratsText.setFillColor(sf::Color::Green);
 
     // Gestion de la position du Texte
@@ -358,7 +358,7 @@ void Game::render() {
         }
     }
 
-    // Dessiner le texte du score
+    /* Dessiner le texte du score */
     window.draw(scoreText);
 
     const std::vector<sf::RectangleShape>& playerBullets = player.getBullets();

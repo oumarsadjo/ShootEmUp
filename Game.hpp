@@ -49,7 +49,7 @@ private:
 
     void processEvents();
     void update(float deltaTime);
-    void render();
+    void render();  /*Pour dessiner les objets a l'ecran*/
     void restartGame();
     void checkCollisions();
     void restartIfRequested();

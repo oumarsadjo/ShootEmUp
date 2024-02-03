@@ -18,7 +18,7 @@ Enemy::Enemy() {
     destroyed = false;
 }
 
-
+/*Pour faire la mise a jour des enemis*/
 void Enemy::update(float deltaTime) {
     if (!destroyed) {
         enemySprite.setTexture(enemyTexture);
